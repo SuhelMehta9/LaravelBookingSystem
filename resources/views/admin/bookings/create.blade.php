@@ -589,6 +589,24 @@ function getDisabledInterval(startTime, endTime){
                         input_to_reset = document.getElementById("start_date");
                         input_to_reset.value = "";
 					}
+					// If selected endDate is in between any booked date
+					// still to test
+					// value[i][1] is booked time slot(basically endDate of a booking)
+					else if(value[i][1] > selected_start_date && value[i][1] < current_date){
+						alert("Already booked for time interval "+ key + " " + value[i][1]);
+                        var input_to_reset = document.getElementById("end_date");
+                        input_to_reset.value = "";
+                        input_to_reset = document.getElementById("start_date");
+                        input_to_reset.value = "";
+					}
+					// If selected 
+					else if(start_date_to_compare > selected_start_date && start_date_to_compare < current_date){
+						alert("Already booked for time interval "+ key + " " + value[i][1]);
+                        var input_to_reset = document.getElementById("end_date");
+                        input_to_reset.value = "";
+                        input_to_reset = document.getElementById("start_date");
+                        input_to_reset.value = "";
+					}
    				}
 			}
 		});
@@ -685,6 +703,8 @@ function getDisabledInterval(startTime, endTime){
 					console.log("startdate "+selected_start_date);
 					//start_date_to_compare = key;
 					//start_date_to_compare = start_date_to_compare.replace(/-/g, "");
+
+					//reset time if user is selecting start time less than booked start time and end time greater than booked end time on same date
 					if(selected_start_date == key && selected_end_date == value[i][1] && key == value[i][1] && selected_start_time < value[i][0] && selected_end_time > disabledTime[disabledTime.length - 1]){
 						alert("Already booked for time interval "+ value[i][0] + " " + disabledTime[disabledTime.length - 1]);
 						var input_to_reset = document.getElementById("end_time");
@@ -692,6 +712,8 @@ function getDisabledInterval(startTime, endTime){
 						input_to_reset = document.getElementById("start_time");
 						input_to_reset.value = "";
 					}
+
+					//reset time if user is selecting start time less than booked start time and end time greater than booked end time on different date
 					else if(selected_start_date == key && selected_end_date == value[i][1] && key != value[i][1] && selected_start_time < value[i][0] && selected_end_time >= value[i][2])
 					{
 						alert("Already booked for time interval "+ key + " " + value[i][1]);
@@ -719,7 +741,7 @@ function getDisabledInterval(startTime, endTime){
    				}
 			}
 		});
-		console.log("Here now" + selected_start_date);
+		console.log("Here now " + selected_start_date);
 		if(selected_start_date > selected_end_date)
 		{
 			alert("End date is less than start date. Please select again");
