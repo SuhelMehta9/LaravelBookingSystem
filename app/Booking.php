@@ -35,12 +35,12 @@ class Booking extends Model
         'select_location_id',
     ];
 
-    public static function boot()
+   /* public static function boot()
     {
         parent::boot();
 
         Booking::observe(new \App\Observers\BookingActionObserver);
-    }
+	}*/
 
     public function select_location()
     {
