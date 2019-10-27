@@ -106,7 +106,7 @@ use App\WorkingHour;
             </div>
             <div class="form-group {{ $errors->has('phone_number') ? 'has-error' : '' }}">
                 <label for="phone_number">{{ trans('cruds.booking.fields.phone_number') }}*</label>
-                <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ old('phone_number', isset($booking) ? $booking->phone_number : '') }}" required disabled>
+                <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ old('phone_number', isset($booking) ? $booking->phone_number : '') }}" required disabled pattern="[0-9]{10}" title="Must be a number of 10 digits">
                 @if($errors->has('phone_number'))
                     <p class="help-block">
                         {{ $errors->first('phone_number') }}
