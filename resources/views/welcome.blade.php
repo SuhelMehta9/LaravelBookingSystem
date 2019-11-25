@@ -25,10 +25,6 @@
                 background-size: cover;
             }
 
-            .bg-color{
-                background: black;
-                opacity: 0.7;
-            }
             .full-height {
                 height: 100vh;
             }
@@ -95,7 +91,7 @@
                 </div>
             @endif
 
-            <div class="content" style="opacity:1;">
+            <div class="content container-fluid">
                 <div class="title" >
                     Booking
                 </div>
